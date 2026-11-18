@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o Jogo | Miraculous Strong Fighter</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Russo One, Chakra Petch & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Russo One"', 'sans-serif'],
+                        gamer: ['"Chakra Petch"', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        miraculous: {
+                            bg: '#09090b',
+                            card: '#121216',
+                            border: '#27272a',
+                            red: '#e61919',
+                            bright: '#ff2a2a',
+                            darkRed: '#7f0909',
+                            gold: '#f59e0b',
+                            akuma: '#8b5cf6'
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite ease-in-out',
+                        'float': 'float 5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { filter: 'drop-shadow(0 0 18px rgba(230, 25, 25, 0.5))' },
+                            '50%': { filter: 'drop-shadow(0 0 32px rgba(255, 42, 42, 0.85))' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #09090b;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .ladybug-dots-bg {
+            background-image: radial-gradient(rgba(230, 25, 25, 0.14) 2px, transparent 2px),
+                              radial-gradient(rgba(230, 25, 25, 0.08) 2px, #09090b 2px);
+            background-size: 44px 44px;
+            background-position: 0 0, 22px 22px;
+        }
+
+        .logo-blend {
+            mix-blend-mode: lighten;
+            user-select: none;
+        }
+
+        .btn-miraculous {
+            background: linear-gradient(135deg, #ff2a2a 0%, #b91c1c 100%);
+            box-shadow: 0 8px 25px -5px rgba(230, 25, 25, 0.6);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-miraculous:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 32px -4px rgba(255, 42, 42, 0.85);
+            background: linear-gradient(135deg, #ff3b3b 0%, #dc2626 100%);
+        }
+
+        .glass-panel {
+            background: rgba(18, 18, 22, 0.84);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .mechanic-tab.active {
+            background: linear-gradient(135deg, rgba(230, 25, 25, 0.22) 0%, rgba(127, 9, 9, 0.35) 100%);
+            border-color: #ff2a2a;
+            box-shadow: 0 0 24px rgba(230, 25, 25, 0.25);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased ladybug-dots-bg selection:bg-miraculous-red selection:text-white min-h-screen flex flex-col">
+
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="relative h-12 flex items-center">
+                    <img 
+                        src="Novo Projeto (3) (1).jpg" 
+                        alt="Miraculous Strong Fighter Logo" 
+                        class="h-full w-auto object-contain logo-blend transition-transform duration-300 group-hover:scale-105"
+                        onerror="this.style.display='none'; document.getElementById('nav-fallback-logo').classList.remove('hidden');"
+                    >
+                    <div id="nav-fallback-logo" class="hidden flex items-center gap-2">
+                        <span class="w-8 h-8 rounded-full bg-miraculous-red border-2 border-black relative flex items-center justify-center shadow-lg shadow-red-600/40">
+                            <span class="w-1.5 h-1.5 bg-black rounded-full absolute top-1.5 left-2"></span>
+                            <span class="w-2 h-2 bg-black rounded-full"></span>
+                            <span class="w-1.5 h-1.5 bg-black rounded-full absolute bottom-1.5 right-2"></span>
+                        </span>
+                        <div class="leading-none">
+                            <span class="font-display text-lg text-white tracking-wide block">MIRACULOUS</span>
+                            <span class="font-display text-xs text-miraculous-bright tracking-widest uppercase block">STRONG FIGHTER</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-zinc-300">
+                <a href="#historia" class="hover:text-miraculous-bright transition-colors">História & Universo</a>
+                <a href="#mecanicas" class="hover:text-miraculous-bright transition-colors">Combate MD3 & Especiais</a>
+                <a href="#minigames" class="hover:text-miraculous-bright transition-colors">Minigames</a>
+                <a href="#diferenciais" class="hover:text-miraculous-bright transition-colors">Diferenciais</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="px-4 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-sm font-bold text-zinc-200 hover:text-white transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-house text-miraculous-bright"></i>
+                    <span class="hidden sm:inline">Início</span>
+                </a>
+                <a href="loja.html" class="px-5 py-2.5 rounded-xl btn-miraculous font-display text-xs sm:text-sm tracking-wider uppercase text-white flex items-center gap-2">
+                    <span>Adquirir Jogo</span>
+                    <i class="fa-solid fa-bolt text-amber-300"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== HERO: SOBRE O JOGO ==================== -->
+    <section class="relative pt-16 pb-20 overflow-hidden border-b border-zinc-800/80">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-miraculous-red/15 rounded-full blur-[130px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-950/60 border border-miraculous-red/50 text-red-200 text-xs font-gamer font-bold tracking-widest uppercase mb-6">
+                    <i class="fa-solid fa-book-open text-amber-400"></i>
+                    <span>Dossiê Oficial do Projeto • Visão Geral</span>
+                </div>
+
+                <h1 class="font-display text-4xl sm:text-6xl text-white uppercase tracking-tight leading-tight mb-6">
+                    Onde o Universo de <span class="text-miraculous-bright">Paris</span> Encontra a Arena Competitiva
+                </h1>
+
+                <p class="text-lg sm:text-xl text-zinc-300 leading-relaxed mb-10">
+                    <strong>Miraculous Strong Fighter</strong> transforma a magia ancestral dos Kwamis e a intensidade emocional das batalhas contra os Akumas em uma experiência de luta tática, acessível e eletrizante — unindo narrativa interativa com combates de tirar o fôlego.
+                </p>
+
+                <!-- Pilares Rápidos (Resumo de Valor) -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-left">
+                    <div class="glass-panel p-4 rounded-2xl border border-zinc-800">
+                        <div class="text-miraculous-bright font-display text-2xl mb-1">MD3</div>
+                        <div class="text-xs font-gamer uppercase text-zinc-400">Formato Oficial</div>
+                        <div class="text-sm font-bold text-white mt-0.5">Melhor de 3 Rounds</div>
+                    </div>
+                    <div class="glass-panel p-4 rounded-2xl border border-zinc-800">
+                        <div class="text-amber-400 font-display text-2xl mb-1">3X</div>
+                        <div class="text-xs font-gamer uppercase text-zinc-400">Arsenal Miraculous</div>
+                        <div class="text-sm font-bold text-white mt-0.5">Ataques Especiais</div>
+                    </div>
+                    <div class="glass-panel p-4 rounded-2xl border border-zinc-800">
+                        <div class="text-purple-400 font-display text-2xl mb-1">HISTÓRIA</div>
+                        <div class="text-xs font-gamer uppercase text-zinc-400">Imersão Narrativa</div>
+                        <div class="text-sm font-bold text-white mt-0.5">Com Minigames Únicos</div>
+                    </div>
+                    <div class="glass-panel p-4 rounded-2xl border border-zinc-800">
+                        <div class="text-emerald-400 font-display text-2xl mb-1">PARIS 3D</div>
+                        <div class="text-xs font-gamer uppercase text-zinc-400">Cenários Vivos</div>
+                        <div class="text-sm font-bold text-white mt-0.5">Arenas Destrutíveis</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SEÇÃO 1: HISTÓRIA & UNIVERSO ==================== -->
+    <section id="historia" class="py-20 border-b border-zinc-800/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Coluna Narrativa -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-xs font-gamer uppercase tracking-widest text-miraculous-bright font-bold">
+                        <span class="w-8 h-0.5 bg-miraculous-bright"></span>
+                        <span>01. História & Universo Expandido</span>
+                    </div>
+
+                    <h2 class="font-display text-3xl sm:text-5xl text-white uppercase leading-tight">
+                        A Crise da <span class="text-purple-400">Convergência Akuma</span> em Paris
+                    </h2>
+
+                    <p class="text-zinc-300 text-base sm:text-lg leading-relaxed">
+                        Ambientado no coração da Paris contemporânea da franquia <em>Miraculous: As Aventuras de Ladybug</em>, o jogo apresenta uma linha narrativa inédita supervisionada para respeitar a mitologia da Caixa dos Miraculous.
+                    </p>
+
+                    <p class="text-zinc-400 text-base leading-relaxed">
+                        Quando uma anomalia mágica rompe o selo entre o mundo físico e o plano espiritual dos <strong>Kwamis</strong>, o vilão descobre como amplificar emoções negativas em escala global — criando versões sobrecarregadas dos vilões akumatizados e distorcendo os monumentos mais icônicos da cidade. Para restaurar o equilíbrio entre <strong>Criação e Destruição</strong>, os portadores precisam dominar o ápice de suas joias mágicas em duelos diretos de alta intensidade.
+                    </p>
+
+                    <!-- Pilares do Universo -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800">
+                            <div class="flex items-center gap-2.5 text-white font-bold mb-1.5">
+                                <i class="fa-solid fa-landmark text-miraculous-bright"></i>
+                                <span>Locais Icônicos de Paris</span>
+                            </div>
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                Combata nos telhados parisienses, nos jardins do Trocadéro com a Torre Eiffel ao fundo, no Museu do Louvre e na Catedral de Notre-Dame sob clima dinâmico.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800">
+                            <div class="flex items-center gap-2.5 text-white font-bold mb-1.5">
+                                <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i>
+                                <span>Mitologia dos Kwamis</span>
+                            </div>
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                Cada joia carrega conceitos cósmicos reais da série (Criação, Destruição, Ilusão, Proteção e Subjugação) traduzidos diretamente nas regras de combate.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna Card Visual do Lore -->
+                <div class="lg:col-span-5">
+                    <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-purple-500/30 relative overflow-hidden">
+                        <div class="absolute -top-16 -right-16 w-48 h-48 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-miraculous-red/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="flex items-center justify-between border-b border-zinc-800 pb-4 mb-6">
+                            <span class="font-gamer text-xs uppercase tracking-widest text-purple-300 font-bold">
+                                <i class="fa-solid fa-feather-pointed mr-1.5"></i> Arquivo da Caixa Mágica
+                            </span>
+                            <span class="px-2.5 py-1 rounded bg-purple-950/70 border border-purple-500/40 text-[11px] font-gamer text-purple-200">
+                                MODO CAMPANHA
+                            </span>
+                        </div>
+
+                        <div class="space-y-5">
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-miraculous-red/20 border border-miraculous-red/50 text-miraculous-bright flex items-center justify-center shrink-0 font-display">
+                                    I
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Ato I — Sombras sobre o Sena</h4>
+                                    <p class="text-xs text-zinc-400 mt-1">Os primeiros sinais de distorção mágica atingem os cidadãos de Paris. Você aprende os fundamentos de combate e purificação.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/50 text-amber-400 flex items-center justify-center shrink-0 font-display">
+                                    II
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Ato II — O Despertar dos Portadores</h4>
+                                    <p class="text-xs text-zinc-400 mt-1">Alianças estratégicas são formadas e os desafios de infiltração (minigames) revelam a origem da energia sombria.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-500/50 text-purple-400 flex items-center justify-center shrink-0 font-display">
+                                    III
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Ato III — O Duelo pelo Desejo Supremo</h4>
+                                    <p class="text-xs text-zinc-400 mt-1">Confronto final em múltiplas fases onde cada round define o destino da realidade parisiense.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SEÇÃO 2: MECÂNICAS DE COMBATE (MD3 + 3 ESPECIAIS) ==================== -->
+    <section id="mecanicas" class="py-20 border-b border-zinc-800/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <div class="inline-flex items-center gap-2 text-xs font-gamer uppercase tracking-widest text-miraculous-bright font-bold mb-3">
+                    <span>02. Sistema de Combate & Mecânicas</span>
+                </div>
+                <h2 class="font-display text-3xl sm:text-5xl text-white uppercase tracking-wide mb-4">
+                    Luta Tática em <span class="text-miraculous-bright">Melhor de 3</span> & Arsenal Miraculous
+                </h2>
+                <p class="text-zinc-400 text-base sm:text-lg">
+                    Projetado para oferecer profundidade competitiva sem barreiras de execução: fácil de aprender nos primeiros minutos, recompensador para quem domina o tempo de reação.
+                </p>
+            </div>
+
+            <!-- Bloco Destaque: Estrutura Melhor de 3 (MD3) -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-zinc-800 mb-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6 space-y-4">
+                        <span class="px-3 py-1 rounded-full bg-miraculous-red/20 border border-miraculous-red/50 text-miraculous-bright font-gamer text-xs font-bold uppercase tracking-wider">
+                            Estrutura Oficial de Partida
+                        </span>
+                        <h3 class="font-display text-2xl sm:text-4xl text-white uppercase">
+                            Sistema Melhor de 3 (MD3)
+                        </h3>
+                        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+                            Cada confronto é disputado no formato clássico de torneios competitivos: <strong>vence quem conquistar 2 rounds primeiro</strong> (até 3 rounds no total).
+                        </p>
+                        <ul class="space-y-3 text-sm text-zinc-300 pt-2">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-fire text-miraculous-bright mt-1"></i>
+                                <span><strong>Leitura e Adaptação:</strong> Perdeu o Round 1? Use o intervalo rápido para ajustar sua estratégia e punir os padrões do oponente no Round 2.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-bolt text-amber-400 mt-1"></i>
+                                <span><strong>Round Decisivo (1 a 1):</strong> No terceiro round, a arena entra em estado de <em>Sobrecarga Miraculous</em>, acelerando a regeneração de energia para um final cinematográfico.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Simulador Visual Interativo dos Rounds MD3 -->
+                    <div class="lg:col-span-6 bg-zinc-950/90 rounded-2xl p-6 border border-zinc-800">
+                        <div class="flex items-center justify-between text-xs font-gamer uppercase text-zinc-400 mb-4">
+                            <span>Simulação de Placar MD3</span>
+                            <span id="md3-status-badge" class="text-amber-400 font-bold">Round 3 • Match Point!</span>
+                        </div>
+
+                        <!-- Placar Visual -->
+                        <div class="flex items-center justify-between gap-4 p-4 rounded-xl bg-zinc-900 border border-zinc-800 mb-5">
+                            <div class="text-center">
+                                <div class="text-xs font-bold text-miraculous-bright uppercase">Herói</div>
+                                <div class="flex items-center gap-1.5 mt-2 justify-center" id="p1-dots">
+                                    <span class="w-4 h-4 rounded-full bg-miraculous-bright shadow-[0_0_10px_#ff2a2a]"></span>
+                                    <span class="w-4 h-4 rounded-full bg-zinc-800 border border-zinc-600"></span>
+                                </div>
+                            </div>
+
+                            <div class="font-display text-2xl sm:text-3xl text-white tracking-widest">
+                                1 <span class="text-zinc-600 text-lg">VS</span> 1
+                            </div>
+
+                            <div class="text-center">
+                                <div class="text-xs font-bold text-purple-400 uppercase">Akumatizado</div>
+                                <div class="flex items-center gap-1.5 mt-2 justify-center" id="p2-dots">
+                                    <span class="w-4 h-4 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]"></span>
+                                    <span class="w-4 h-4 rounded-full bg-zinc-800 border border-zinc-600"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-zinc-400 leading-relaxed text-center">
+                            O formato <strong>MD3</strong> garante partidas dinâmicas de 3 a 5 minutos, mantendo a adrenalina no máximo do início ao fim sem tornar os duelos cansativos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Os 3 Ataques Especiais -->
+            <div class="mb-6 flex items-center justify-between">
+                <h3 class="font-display text-xl sm:text-2xl text-white uppercase">
+                    Tríade de Poder: Os <span class="text-amber-400">3 Ataques Especiais</span>
+                </h3>
+                <span class="text-xs font-gamer uppercase text-zinc-400 hidden sm:inline">Cada lutador possui seu conjunto exclusivo</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Especial 1 -->
+                <div class="glass-panel rounded-3xl p-6 border border-zinc-800 hover:border-miraculous-red/60 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-12 h-12 rounded-2xl bg-miraculous-red/20 border border-miraculous-red/50 text-miraculous-bright flex items-center justify-center font-display text-xl">
+                                01
+                            </span>
+                            <span class="text-xs font-gamer uppercase px-2.5 py-1 rounded bg-zinc-900 text-zinc-300 border border-zinc-700">
+                                Recarga Rápida • 1 Barra
+                            </span>
+                        </div>
+                        <h4 class="font-display text-xl text-white uppercase mb-2">
+                            Especial Tático (Ofensiva / Controle)
+                        </h4>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+                            Golpe característico da arma do portador (como o arremesso teleguiado de Io-Iô ou a estocada de Bastão). Ideal para iniciar combos, controlar a distância da arena e quebrar a guarda adversária.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-zinc-800/80 flex items-center justify-between text-xs font-gamer text-miraculous-bright">
+                        <span>FUNÇÃO: PRESSÃO & COMBO</span>
+                        <i class="fa-solid fa-crosshairs"></i>
+                    </div>
+                </div>
+
+                <!-- Especial 2 -->
+                <div class="glass-panel rounded-3xl p-6 border border-zinc-800 hover:border-amber-500/60 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/50 text-amber-400 flex items-center justify-center font-display text-xl">
+                                02
+                            </span>
+                            <span class="text-xs font-gamer uppercase px-2.5 py-1 rounded bg-zinc-900 text-zinc-300 border border-zinc-700">
+                                Estratégico • 2 Barras
+                            </span>
+                        </div>
+                        <h4 class="font-display text-xl text-white uppercase mb-2">
+                            Especial de Habilidade Miraculous
+                        </h4>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+                            Ativa a propriedade única do Kwami em combate — seja criando barreiras defensivas, contra-ataques instantâneos, ilusões de troca de posição ou investidas aéreas de alta velocidade.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-zinc-800/80 flex items-center justify-between text-xs font-gamer text-amber-400">
+                        <span>FUNÇÃO: MOBILIDADE & CONTRA-ATAQUE</span>
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                </div>
+
+                <!-- Especial 3 -->
+                <div class="glass-panel rounded-3xl p-6 border border-purple-500/40 hover:border-purple-400 transition-all flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-purple-500/15 rounded-full blur-2xl pointer-events-none"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-12 h-12 rounded-2xl bg-purple-500/20 border border-purple-500/50 text-purple-300 flex items-center justify-center font-display text-xl">
+                                03
+                            </span>
+                            <span class="text-xs font-gamer uppercase px-2.5 py-1 rounded bg-purple-950/80 text-purple-200 border border-purple-500/40">
+                                Ultimate • 3 Barras
+                            </span>
+                        </div>
+                        <h4 class="font-display text-xl text-white uppercase mb-2">
+                            Golpe Supremo (Talismã / Cataclismo)
+                        </h4>
+                        <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+                            O ataque definitivo com animação cinematográfica exclusiva. Libera o poder máximo do Miraculous para causar dano massivo e virar o placar mesmo nos segundos finais do round.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-zinc-800/80 flex items-center justify-between text-xs font-gamer text-purple-300">
+                        <span>FUNÇÃO: FINALIZAÇÃO CINEMATOGRÁFICA</span>
+                        <i class="fa-solid fa-burst"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SEÇÃO 3: MINIGAMES NO MODO HISTÓRIA ==================== -->
+    <section id="minigames" class="py-20 border-b border-zinc-800/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-2 text-xs font-gamer uppercase tracking-widest text-amber-400 font-bold mb-3">
+                        <span>03. Variedade de Gameplay</span>
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-5xl text-white uppercase leading-tight">
+                        Minigames Integrados ao <span class="text-amber-400">Modo História</span>
+                    </h2>
+                </div>
+                <p class="text-zinc-400 text-sm sm:text-base max-w-md">
+                    Entre uma batalha MD3 e outra, a campanha quebra a repetição com desafios interativos que colocam você na pele de um verdadeiro herói de Paris.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Minigame 1 -->
+                <div class="glass-panel rounded-3xl p-6 border border-zinc-800 hover:border-miraculous-bright/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-miraculous-red/20 text-miraculous-bright flex items-center justify-center text-xl mb-5">
+                        <i class="fa-solid fa-wand-sparkles"></i>
+                    </div>
+                    <span class="text-[11px] font-gamer uppercase tracking-widest text-zinc-400">Desafio de Reflexo</span>
+                    <h3 class="font-display text-xl text-white uppercase mt-1 mb-3">Purificação de Akumas</h3>
+                    <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+                        Após derrotar um chefão na arena, execute sequências rítmicas e de precisão para capturar e purificar a borboleta sombria antes que ela se multiplique pela cidade.
+                    </p>
+                    <div class="text-xs font-semibold text-emerald-400 flex items-center gap-2">
+                        <i class="fa-solid fa-award"></i>
+                        <span>Recompensa: Bônus de energia no próximo capítulo</span>
+                    </div>
+                </div>
+
+                <!-- Minigame 2 -->
+                <div class="glass-panel rounded-3xl p-6 border border-zinc-800 hover:border-amber-400/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-5">
+                        <i class="fa-solid fa-person-running"></i>
+                    </div>
+                    <span class="text-[11px] font-gamer uppercase tracking-widest text-zinc-400">Ação & Agilidade</span>
+                    <h3 class="font-display text-xl text-white uppercase mt-1 mb-3">Corrida pelos Telhados de Paris</h3>
+                    <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+                        Salte entre chaminés, desvie de obstáculos e utilize o impulso acrobático em trechos de perseguição cronometrada para alcançar o local do ataque antes do tempo acabar.
+                    </p>
+                    <div class="text-xs font-semibold text-emerald-400 flex items-center gap-2">
+                        <i class="fa-solid fa-award"></i>
+                        <span>Recompensa: Desbloqueio de artes e trajes alternativos</span>
+                    </div>
+                </div>
+
+                <!-- Minigame 3 -->
+                <div class="glass-panel rounded-3xl p-6 border border-zinc-800 hover:border-purple-400/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-5">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                    </div>
+                    <span class="text-[11px] font-gamer uppercase tracking-widest text-zinc-400">Estratégia & Lógica</span>
+                    <h3 class="font-display text-xl text-white uppercase mt-1 mb-3">Enigma do Talismã & Guardião</h3>
+                    <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+                        Combine objetos conjurados e decifre os códigos ancestrais do Grimório dos Miraculous para descobrir o ponto fraco oculto dos chefes antes do combate decisivo.
+                    </p>
+                    <div class="text-xs font-semibold text-emerald-400 flex items-center gap-2">
+                        <i class="fa-solid fa-award"></i>
+                        <span>Recompensa: Vantagem tática contra o chefe do Ato</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SEÇÃO 4: DIFERENCIAIS & ARGUMENTOS DE VENDA ==================== -->
+    <section id="diferenciais" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <div class="inline-flex items-center gap-2 text-xs font-gamer uppercase tracking-widest text-miraculous-bright font-bold mb-3">
+                    <span>04. Por Que Jogar Miraculous Strong Fighter?</span>
+                </div>
+                <h2 class="font-display text-3xl sm:text-5xl text-white uppercase tracking-wide mb-4">
+                    Diferenciais que Elevam a Experiência
+                </h2>
+                <p class="text-zinc-400 text-base sm:text-lg">
+                    Combinamos o carisma de uma franquia globalmente amada com decisões de game design focadas em diversão imediata e longevidade.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
+                <!-- Diferencial 1 -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-zinc-800 flex gap-5">
+                    <div class="w-12 h-12 rounded-2xl bg-miraculous-red/20 border border-miraculous-red/40 text-miraculous-bright flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-lg sm:text-xl text-white uppercase mb-2">Acessível para Fãs, Profundo para Competidores</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Diferente de jogos de luta tradicionais com comandos complexos que afastam novos jogadores, o sistema de <strong>3 Especiais dedicados</strong> permite executar golpes espetaculares desde a primeira partida, enquanto o timing de defesa e gestão de barras recompensa jogadores experientes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Diferencial 2 -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-zinc-800 flex gap-5">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-lg sm:text-xl text-white uppercase mb-2">Campanha Dinâmica (Luta + Minigames)</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Em vez de apenas enfileirar lutas contra a CPU, o Modo História intercala os combates <strong>MD3</strong> com minigames temáticos de agilidade, purificação e quebra-cabeças, mantendo o ritmo narrativo sempre envolvente.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Diferencial 3 -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-zinc-800 flex gap-5">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/20 border border-purple-500/40 text-purple-400 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-lg sm:text-xl text-white uppercase mb-2">Do Modo História ao PvP Online Competitivo</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Comece explorando a trama na Edição Demo e evolua para a Edição Completa com partidas online em formato MD3, testando suas habilidades contra jogadores de todas as plataformas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Diferencial 4 -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-zinc-800 flex gap-5">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-lg sm:text-xl text-white uppercase mb-2">Modelo de Entrada Justo e Transparente</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Experimente o Modo História imediatamente através da <strong>Edição Demo acessível</strong> antes de garantir a versão completa com PvP Online, sem mecânicas abusivas de pay-to-win.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Final de Conversão -->
+            <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-miraculous-red/40 text-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-miraculous-red/10 via-transparent to-purple-600/10 pointer-events-none"></div>
+                <div class="relative z-10 max-w-2xl mx-auto">
+                    <h3 class="font-display text-2xl sm:text-4xl text-white uppercase mb-4">
+                        Pronto para Entrar na Arena de Paris?
+                    </h3>
+                    <p class="text-zinc-300 text-sm sm:text-base mb-8">
+                        Escolha sua plataforma favorita, garanta uma das últimas chaves da Edição Demo ou faça a reserva da Edição Completa.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="loja.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl btn-miraculous font-display text-base uppercase tracking-wider text-white flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-cart-shopping text-amber-300"></i>
+                            <span>Ver Edições e Preços</span>
+                        </a>
+                        <a href="index.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 font-display text-base uppercase tracking-wider text-zinc-200 hover:text-white transition-all">
+                            Voltar à Página Inicial
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
